@@ -6,19 +6,23 @@
         <h1>Registrarse</h1>
         <div class="mb-1">
           <label for="name" class="form-label">Nombre</label>
-          <input type="name" class="form-control" id="name">
+          <input type="name" class="form-control" id="name" required v-model="name">
         </div>
         <div class="mb-1">
-          <label for="rut" class="form-label">Rut</label>
-          <input type="rut" class="form-control" id="rut">
+          <label for="lastname" class="form-label">Apellido</label>
+          <input type="lastname" class="form-control" id="lastname" required v-model="lastname">
+        </div>
+        <div class="mb-1">
+          <label for="age" class="form-label">Edad</label>
+          <input type="age" class="form-control" id="age" required v-model="age">
         </div>
         <div class="mb-1">
           <label for="email" class="form-label">Correo</label>
-          <input type="email" class="form-control" id="email">
+          <input type="email" class="form-control" id="email" required v-model="email">
         </div>
         <div class="mb-4">
           <label for="pass" class="form-label">Contraseña</label>
-          <input type="pass" class="form-control" id="pass">
+          <input type="pass" class="form-control" id="pass" required v-model="pass">
           
         </div>
         <button type="submit" class="btn btn-light mb-3">Registrar</button>
@@ -28,20 +32,37 @@
 </template>
 
 <script>
+import api from '../api/api_config'
 export default {
   data() {
     return {
       name: '',
-      rut: '',
+      lastname: '',
+      age: '',
       email: '',
-      password: ''
+      pass: ''
 
     };
   },
   methods: {
-    register() {
-      console.log("usuario registrado");
-    }
+    async register() {
+        
+        await api.post('register',{
+        name:this.name,
+        lastname:this.lastname,
+        age:this.age,
+        email:this.email,
+        pass:this.pass
+      },{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .catch(function (error) { 
+        console.log(error.toJSON());
+      });
+    
+    },
   }
 };
 </script>

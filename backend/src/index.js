@@ -34,6 +34,15 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/register', async (req, res) => {
+    const user = userSchema(req.body);
+    user
+        .save()
+        .then((data) => console.log(data))
+        .catch((error) => res.json({ message: error }));
+});
+
+
 const database = module.exports = async () => {
 
     const connectionParams = {
