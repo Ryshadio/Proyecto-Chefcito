@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     async login() {
-      const response = await api.post('/login',{
+      const response = await api.post('login',{
         email:this.email,
         pass:this.password
       })
@@ -42,9 +42,7 @@ export default {
       if (response){
         this.$router.push('/menu');
       }
-      else {
-        console.log("pucha oh");
-      }
+      
 
     },
     

@@ -54,15 +54,27 @@ router.delete("/users/:id", (req, res) => {
 
 
 
-router.post("/login", async (req,res) =>{
-    const { email, pass} = req.body;
-
-    userSchema
-        .findOne({_email: email})
-        .then((data) => {
-            if
-        })
-        .catch((error) => res.json({ message: error}));
+router.post('/login', async (req, res) => {
+    const { email, pass } = req.body;
+  
+    try {
+      const user = await userSchema.findOne({ email });
+  
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+  
+      const isMatch = await pass === user.pass;
+  
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+  
+      res.json({ message: 'Logged in successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: 'Server error' });
+    }
 });
 
 module.exports = router;
