@@ -20,8 +20,9 @@
 </template>
 
 <script>
-
+import api from '../api/api_config'
 export default {
+  
   data() {
     return {
       email: '',
@@ -29,16 +30,22 @@ export default {
     };
   },
   methods: {
-    login() {
-      if (this.email === 'admin@gmail.com' && this.password === 'pass') {
-        console.log('funciono el login');
+    async login() {
+      const response = await api.post('/login',{
+        email:this.email,
+        pass:this.password
+      })
+      .catch(function (error) { 
+        console.log(error.toJSON());
+      });
+
+      if (response){
         this.$router.push('/menu');
-
-      } else {
-
-        console.log('falló el login');
-
       }
+      else {
+        console.log("pucha oh");
+      }
+
     },
     
   }

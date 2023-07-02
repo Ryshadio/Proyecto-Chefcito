@@ -51,4 +51,18 @@ router.delete("/users/:id", (req, res) => {
         .catch((error) => res.json({ message: error}));
 });
 
+
+
+
+router.post("/login", async (req,res) =>{
+    const { email, pass} = req.body;
+
+    userSchema
+        .findOne({_email: email})
+        .then((data) => {
+            if
+        })
+        .catch((error) => res.json({ message: error}));
+});
+
 module.exports = router;
