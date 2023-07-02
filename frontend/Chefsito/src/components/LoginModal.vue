@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="abs-center">
       
-      <form @submit="login">
+      <form @submit.prevent="login">
         <h1>Iniciar Sesión</h1>
         <div class="mb-1">
           <label for="email" class="form-label">Correo</label>
@@ -42,8 +42,7 @@ export default {
       if (response){
         this.$router.push('/menu');
       }
-      
-
+    
     },
     
   }
