@@ -7,7 +7,7 @@ const videoSchema = require("../models/videos");
 
 router.post('/guardar-video', async (req, res) => {
     try {
-      const { nombre, link,shorturl } = req.body;
+      const { nombre, link } = req.body;
   
       const video = new Video({ nombre, link });
   
