@@ -47,11 +47,14 @@ app.post('/register', async (req, res) => {
         .then((data) => console.log(data))
         .catch((error) => res.json({ message: error }));
 
-
-
-
 })
 
+app.get('/get-videos', async(req,res) => {
+  videoSchema
+        .find()
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+})
 
 
 

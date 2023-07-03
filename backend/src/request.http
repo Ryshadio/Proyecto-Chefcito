@@ -11,6 +11,12 @@ Content-Type: application/json
     "pass": "garrapata123"
 }
 
+
+
+###
+GET http://localhost:3000/get-videos HTTP/1.1
+
+
 ###
 POST http://localhost:3000/api/users HTTP/1.1
 Content-Type: application/json

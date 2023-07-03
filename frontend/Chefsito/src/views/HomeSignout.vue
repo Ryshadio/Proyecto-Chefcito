@@ -9,7 +9,7 @@
     <LoginModal v-if="tab==1" />
     <RegisterView v-else />
   </body>
-  <ExploreBar />
+  
 </template>
 
 <script setup>
@@ -17,7 +17,7 @@
   import HeaderApp from '../components/HeaderApp.vue'
   import LoginModal from '../components/LoginModal.vue'
   import RegisterView from '../components/RegisterView.vue'
-  import ExploreBar from '../components/ExploreBar.vue';
+  
   
   const tab = ref(0);
 
