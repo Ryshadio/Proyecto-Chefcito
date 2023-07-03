@@ -1,13 +1,19 @@
 const express = require('express');
 const mongoose = require ("mongoose");
 const userRoutes = require("./routes/user");
+const videosRoutes = require("./routes/videos");
 const cors = require('cors');
 require("dotenv").config();
 const userSchema = require("./models/user");
+const videoSchema = require("./models/videos");
+const Video = require('./models/videos');
 const app = express();
 const port = 3000;
-
-app.use(express.json());
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+const mongoURL = process.env.MONGODB_URI;
+const dbName = 'users';
 app.use('/api', userRoutes);
 app.use( cors());
 
@@ -40,8 +46,6 @@ app.post('/register', async (req, res) => {
         .save()
         .then((data) => console.log(data))
         .catch((error) => res.json({ message: error }));
-<<<<<<< Updated upstream:backend/src/index.js
-=======
 
 
 
@@ -53,9 +57,9 @@ app.post('/register', async (req, res) => {
 
 app.post('/guardar-video', async (req, res) => {
   try {
-    const { nombre, link,shorturl } = req.body;
+    const { nombre, link } = req.body;
 
-    const video = new Video({ nombre, link,shorturl });
+    const video = new Video({ nombre, link });
 
     await video.save();
 
@@ -64,8 +68,8 @@ app.post('/guardar-video', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Error al guardar el video' });
   }
->>>>>>> Stashed changes:proyecto-tel-335-chefsito-main/backend/src/index.js
 });
+
 
 
 const database = module.exports = async () => {

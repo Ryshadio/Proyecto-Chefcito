@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeSignout from "../views/HomeSignout.vue"
 import HomeView from "../views/HomeView.vue"
-
+import videoview from "../views/videoview.vue"
 
 const routes = [
   {
@@ -13,6 +13,11 @@ const routes = [
     path: '/menu',
     name: 'menu',
     component: HomeView
+  },
+  { 
+    path: '/otra', 
+    name: 'videoview',
+    component: videoview
   }
 ]
 

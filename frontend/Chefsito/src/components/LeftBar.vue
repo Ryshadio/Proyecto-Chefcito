@@ -10,19 +10,25 @@
                 <a class="nav-link" @click="()=>navigate(1)">Suscripciones</a>
                 <a class="nav-link" @click="()=>navigate(2)">Guardados</a>
                 <a class="nav-link" @click="()=>navigate(3)">To do list</a>
-                <button id="crear" class="btn btn-outline-light mx-3 font">Crear</button>
+                <button id="crear" class="btn btn-outline-light mx-3 font" @click="redirectToCrearView">Crear</button>
             </nav>
         </div>
     </body>
 </template>
 
-<script setup>
-
-    const navigate = (n) => {
-        console.log(n);
+<script >
+export default {
+  methods: {
+    redirectToCrearView() {
+      this.$router.push('/otra');
+    },
+    navigate(n) {
     }
+  }
+}
 
 </script>
+
 
 <style scoped>
 body {

@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" @click="()=>changePato(0)">
-      Chefsito
-    </a>
+    <router-link to="/menu" class="navbar-brand">
+        Chefsito
+      </router-link>
     
     <div class="d-flex justify-content-end">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
