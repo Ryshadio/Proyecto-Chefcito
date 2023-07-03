@@ -40,6 +40,31 @@ app.post('/register', async (req, res) => {
         .save()
         .then((data) => console.log(data))
         .catch((error) => res.json({ message: error }));
+<<<<<<< Updated upstream:backend/src/index.js
+=======
+
+
+
+
+})
+
+
+
+
+app.post('/guardar-video', async (req, res) => {
+  try {
+    const { nombre, link,shorturl } = req.body;
+
+    const video = new Video({ nombre, link,shorturl });
+
+    await video.save();
+
+    res.json(video);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al guardar el video' });
+  }
+>>>>>>> Stashed changes:proyecto-tel-335-chefsito-main/backend/src/index.js
 });
 
 
